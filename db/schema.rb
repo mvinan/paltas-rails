@@ -11,9 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150902155457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "zombie_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id", using: :btree
+  add_index "assignments", ["zombie_id"], name: "index_assignments_on_zombie_id", using: :btree
+
+  create_table "brains", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "zombie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "brains", ["zombie_id"], name: "index_brains_on_zombie_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string  "status"
+    t.integer "zombie_id"
+  end
+
+  add_index "tweets", ["zombie_id"], name: "index_tweets_on_zombie_id", using: :btree
+
+  create_table "zombies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.integer  "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "email"
+  end
 
 end

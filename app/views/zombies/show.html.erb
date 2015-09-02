@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="show panel panel-info">
+  <div class="panel-heading">
+    <p >
+      <strong>Name:</strong>
+      <%= @zombie.name %>
+    </p>
+  </div>
+
+  <div class="panel-body">
+    <p>
+      <strong>Bio:</strong>
+      <%= @zombie.bio %>
+    </p>
+
+    <p>
+      <strong>Age:</strong>
+      <%= @zombie.age %>
+    </p>
+    <p>
+      <strong>Email:</strong>
+      <%= @zombie.email %>
+    </p>
+  </div>
+</div>
+
+<div class="btns-container">
+  <%= link_to 'Edit', edit_zombie_path(@zombie), class:"btn btn-default" %>
+  <%= link_to 'Back', zombies_path , class: "btn btn-default"%>
+</div>

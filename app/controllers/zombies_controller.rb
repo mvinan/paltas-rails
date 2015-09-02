@@ -10,6 +10,7 @@ class ZombiesController < ApplicationController
   # GET /zombies/1
   # GET /zombies/1.json
   def show
+    @zombie = Zombie.includes(:brain, :tweets).find(params[:id])
   end
 
   # GET /zombies/new

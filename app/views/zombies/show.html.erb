@@ -22,6 +22,20 @@
       <strong>Email:</strong>
       <%= @zombie.email %>
     </p>
+    <p>
+      <strong>Tweets:</strong>
+      <% if @zombie.tweets.any?%>
+        <% @zombie.tweets.each do |tweet|%>
+          <li><%= tweet.body  %></li>
+        <% end %>
+      <% else %>
+        <span>No tweets for this zombie</span>
+      <% end %>
+    </p>
+    <p>
+      <strong>Brain:</strong>
+      <%= @zombie.brain.status %>
+    </p>
   </div>
 </div>
 
